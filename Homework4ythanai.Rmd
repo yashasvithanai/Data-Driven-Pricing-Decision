@@ -1,0 +1,124 @@
+---
+title: "ythanai - Homework 4"
+author: "ythanai"
+output: html_document
+---
+
+Please read all instructions carefully.  Replace the capital letters above with your blackboard username.  To allow this file to be knit, you might need to save it in a new location, as you do not have write permissions in the dropbox folder, and R does not work well with chinese characters.
+Do not comment out the lines that produce output.  Check your html file before submission to ensure it has all relevant output.  Ensure all answers are your own words and your own work.  Do not delete anything below these instructions.  Thank you! 
+
+
+
+**Question 1A:**
+```{r Question 1A}
+# loading the data
+setwd("/Users/yashasvithanai/Desktop/Simon/Predictive & Causal Analytics/HW 4")
+fullFile = read.csv('Homework 4 Data - 436(R).csv')
+
+# taking the subset for student ID ending with 5: Minute Maid 64oz
+
+minuteMaidData64 <- subset(fullFile, brand == 5)
+```
+
+**Question 1B:**
+```{r Question 1B}
+# Model 1
+thisLM <- lm(log(units)~ price + isFeature, data = minuteMaidData64)
+summary(thisLM)
+```
+
+**Question 1C:**
+```{r Question 1C}
+# Potential Prices
+possiblePrices <- data.frame(price = seq(0,10,.01), isFeature = FALSE)
+
+```
+
+**Question 1D:**
+```{r Question 1D}
+# Calculating expected demand for the given range of potential prices
+possiblePrices$expectedDemand <- exp(predict(thisLM, possiblePrices))
+plot(possiblePrices$expectedDemand)
+```
+
+**Question 1E:**
+```{r Question 1E}
+# calculating average marginal cost
+avgMarginalCost <- mean(minuteMaidData64$marginalCost)
+# calculating contribution margin of a unit 
+possiblePrices$profitMargin <-  possiblePrices$price - avgMarginalCost
+
+```
+
+**Question 1F:**
+```{r Question 1F}
+# calculating the expected profit according to Model 1 for given potential prices
+possiblePrices$expectedProfit <- possiblePrices$profitMargin* possiblePrices$expectedDemand
+plot(possiblePrices$expectedProfit)
+```
+
+**Question 1G:**
+```{r Question 1G}
+# calculating the optimal price according to Model 1
+which.max(possiblePrices$expectedProfit)
+#Keep 'optPrice' here so we can see your optimal price
+optPrice <- possiblePrices[which.max(possiblePrices$expectedProfit), "price"]
+optPrice
+# optimal price using Model 1 is $2.65
+```
+
+**Question 1H:**
+```{r Question 1H}
+# model 2: same steps as previous model
+# omitted variable: isfeature, i.e. variable noting whether or not the product was featured
+secondLM <- lm(log(units)~ price, data = minuteMaidData64)
+summary(secondLM)
+possiblePrices <- data.frame(price = seq(0,10,.01))
+possiblePrices$expectedDemand <- exp(predict(secondLM, possiblePrices))
+plot(possiblePrices$expectedDemand)
+avgMarginalCost <- mean(minuteMaidData64$marginalCost)
+possiblePrices$profitMargin <-  possiblePrices$price - avgMarginalCost
+possiblePrices$expectedProfit <- possiblePrices$profitMargin* possiblePrices$expectedDemand
+plot(possiblePrices$expectedProfit)
+
+which.max(possiblePrices$expectedProfit)
+#Keep 'optPrice' here so we can see your optimal price
+optPrice <- possiblePrices[which.max(possiblePrices$expectedProfit), "price"]
+optPrice
+ # optimal price as a result of omitted variable bias: $2.36
+```
+
+**Question 1I:**
+```{r Question 1I}
+#INSERT CODE HERE
+# model 3: Noting Interation Terms
+thirdLM <- lm(log(units)~ price*isFeature, data = minuteMaidData64)
+summary(thirdLM)
+possiblePrices <- data.frame(price = seq(0,10,.01), isFeature=T)
+possiblePrices$expectedDemand <- exp(predict(thirdLM, possiblePrices))
+plot(possiblePrices$expectedDemand)
+avgMarginalCost <- mean(minuteMaidData64$marginalCost)
+possiblePrices$profitMargin <-  possiblePrices$price - avgMarginalCost
+possiblePrices$expectedProfit <- possiblePrices$profitMargin* possiblePrices$expectedDemand
+plot(possiblePrices$expectedProfit)
+
+which.max(possiblePrices$expectedProfit)
+#Keep 'optPrice' here so we can see your optimal price
+optPrice <- possiblePrices[which.max(possiblePrices$expectedProfit), "price"]
+optPrice
+# optimal proce when a product is featured: $2.2
+```
+
+
+
+**Question 2A:Compare the demand models you estimated in parts in parts 1b and 1h. Which model would you expect to yield a higher optimal price? Why? **
+isFeature is omitted in model 1h while it is included in model 1b. isFeature will have a negative correlation with price and a positive correlation with quantity demanded leading to a negative bias. So, the consumers in model 1h are shown to be more price sensitive. Therefore, we expect a higher optimal price in model 1b than 1h. 
+
+**Question 2B:Compare the optimal prices calculated in part 1g and 1h. Based on this data analysis and the course materials, which would you expect would yield higher profits if implemented? Why? **
+Model 1g results in a higher optimal price than Model 1h. Model 1h has omitted isFeature which is a crucial variable. This leads to a negative bias in the model making the consumers seem to be more price sensitive, giving a lower optimal price, making it a bad model.  Therefore, the estimated profit in model 1h will be incorrect. 
+
+**Question 2C:Compare the standard price you calculated in part 1g and the featured price in part 1i. Which price was lower? What in the regression would lead you to expect that this was the case?**
+Model 1i has a lowered featured price as opposed to the standard price of 1g. The interaction coefficient of -1.04654 shows that consumers tend to be more price sensitive when a product is featured, and we will thus charge a lower price when it is featured.
+
+**Question 2D:This analysis didn’t account for the price of other brands. How does that bias the estimate of optimal prices in 1g?**
+When a competitor's price decreases, the demand for our product reduces and our prices also reduce as a response. So, omitting competitor's prices will lead to positive bias. We will thus assume that the consumers are less price sensitive than they actually are, causing us to price the product higher than optimal amount.
