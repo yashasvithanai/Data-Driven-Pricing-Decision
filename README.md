@@ -42,7 +42,7 @@ The following regression model records the interaction between price and featuri
 
 ` thirdLM <- lm(log(units)~ price*isFeature, data = minuteMaidData64)`
 
-The interaction coefficient obtained is -1.04654 quantity demanded changes by -1.04654
+The interaction coefficient obtained is -1.04654
 
 Optimal price when a product is featured: $2.2
 
