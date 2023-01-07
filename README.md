@@ -54,19 +54,13 @@ The interaction coefficient obtained is -1.04654
 Optimal price when a product is featured: $2.2
 
 ## Observations
-1.	**Comparing Model 1 and Model 2**
-
-The coefficient of price in Model 2 will be biased as isFeature is omitted in the model. isFeature will have a negative correlation with price and a positive correlation with quantity demanded leading to a negative bias. So, the consumers in model 2 are shown to be more price sensitive. 
+1.	**Comparing Model 1 and Model 2**: The coefficient of price in Model 2 will be biased as isFeature is omitted in the model. isFeature will have a negative correlation with price and a positive correlation with quantity demanded leading to a negative bias. So, the consumers in model 2 are shown to be more price sensitive. 
 
 2.	Therefore, Model 2 underestimates the optimal price of product, showcasing how omitted variable bias can affect the pricing decision.
 
-3.	**Comparing Model 2 and Model 3**
+3.	**Comparing Model 2 and Model 3**: Model 3 has a lowered featured price as opposed to the standard price of 2. The interaction coefficient of -1.04654 shows that consumers tend to be more price sensitive when a product is featured, and we will thus charge a lower price when it is featured.
 
-Model 3 has a lowered featured price as opposed to the standard price of 2. The interaction coefficient of -1.04654 shows that consumers tend to be more price sensitive when a product is featured, and we will thus charge a lower price when it is featured.
-
-4.	We also anticipate **the effect on optimal price because of not considering competitors’ prices**
-
-When a competitor's price decreases, the demand for our product reduces and our prices also reduce as a response. So, omitting competitor's prices will lead to positive bias. We will thus assume that the consumers are less price sensitive than they are, causing us to price the product higher than optimal amount.
+4.	We also anticipate **the effect on optimal price because of not considering competitors’ prices**: When a competitor's price decreases, the demand for our product reduces and our prices also reduce as a response. So, omitting competitor's prices will lead to positive bias. We will thus assume that the consumers are less price sensitive than they are, causing us to price the product higher than optimal amount.
 
 ### Key Takeaway 
 Therefore, while Model 3 records price elasticity when a product is featured and not featured and helps us estimate optimal prices for both cases, the prices are still biased as competitors’ prices are not considered. Causal models require us to creatively think of variables which can affect the dependent variables, omitting which can cause biased results. We may never truly obtain unbiased results, however, considering as many as possible can help us reduce the bias and get close to the results.
