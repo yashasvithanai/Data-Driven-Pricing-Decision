@@ -19,7 +19,7 @@ To make a data-driven pricing decision for MinuteMaid’s 64oz orange juice.
 
 ### Demand Model 1
 
-The following causal regression model records price elasticity i.e. the effect of price on expected demand when a product is not featured. 
+The following causal regression model records price elasticity i.e. the effect of price on expected demand. We will use this to generate optimal price from the demand model when the product is not featured. 
 
 `Lm1 <- lm(log(units)~ price + isFeature, data = minuteMaidData64)`
 
