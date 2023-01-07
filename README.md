@@ -12,7 +12,7 @@ To make a data-driven pricing decision for MinuteMaid’s 64oz orange juice.
 - _price_ The price, in dollars, for one unit of this brand
 - _marginalCost_ A numeric variable that specifies the cost per unit in that store/week 
 
-## Analytics Concepts 
+## Analytical Concepts Used and their Business Application
 -	Utilizing 3 causal models to estimate demand models thus estimating profits for different potential prices and obtaining the optimal price against highest profit generating point.
 -	Observing omitted variable bias caused due to not considering isFeature, returning an incorrect optimal price estimate which can severely affect a company’s pricing decision.
 -	Observing how interaction variables change the optimal prices when a promotional activity is executed.
