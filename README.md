@@ -32,7 +32,7 @@ The optimal price is obtained by calculating the point generating highest expect
 Optimal Price from this Model when a product is not featured: $2.65.
 
 ### Demand Model 2
-The following causal regression model records price elasticity i.e. the effect of price on expected demand for regarding whether the product was featured. As we do not consider isFeature, the coefficient of price will be biased, returning an incorrect estimate.
+The following causal regression model records price elasticity i.e. the effect of price on expected demand disregarding whether the product was featured. As we do not consider isFeature, the coefficient of price will be biased, returning an incorrect estimate.
 
 `secondLM <- lm(log(units)~ price, data = minuteMaidData64)`
 
