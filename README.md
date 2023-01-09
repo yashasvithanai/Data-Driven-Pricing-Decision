@@ -58,7 +58,7 @@ Optimal price when a product is featured: $2.2
 
 2.	Therefore, Model 2 underestimates the optimal price of product, showcasing how omitted variable bias can affect the pricing decision.
 
-3.	**Comparing Model 2 and Model 3**: Model 3 has a lowered featured price as opposed to the standard price of 2. The interaction coefficient of -1.04654 shows that consumers tend to be more price sensitive when a product is featured, and we will thus charge a lower price when it is featured.
+3.	**Comparing Model 2 and Model 3**: Model 3 has a lowered featured price as opposed to the standard price of Model 2. The interaction coefficient of -1.04654 shows that consumers tend to be more price sensitive when a product is featured, and we will thus charge a lower price when it is featured.
 
 4.	We also anticipate **the effect on optimal price because of not considering competitors’ prices**: When a competitor's price decreases, the demand for our product reduces and our prices also reduce as a response. So, omitting competitor's prices will lead to positive bias. We will thus assume that the consumers are less price sensitive than they are, causing us to price the product higher than optimal amount.
 
