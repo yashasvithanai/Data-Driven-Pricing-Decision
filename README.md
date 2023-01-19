@@ -23,11 +23,19 @@ The following causal regression model records price elasticity i.e. the effect o
 
 `Lm1 <- lm(log(units)~ price + isFeature, data = minuteMaidData64)`
 
-Now, we obtain the demand model based on the price elasticity for different potential prices. Here, coefficient of price = -1.013.
-
 <img width="430" alt="r1" src="https://user-images.githubusercontent.com/119455759/211060937-b9168ac0-3568-4299-9a93-7e5a728c5f38.png">
 
-The optimal price is obtained by calculating the point generating highest expected profit.
+
+The demand curve derived from the model
+<img width="625" alt="Screen Shot 2023-01-19 at 5 18 22 PM" src="https://user-images.githubusercontent.com/119455759/213575107-55fe8e8f-b06e-4240-8939-a8b5ca7f57b9.png">
+
+- We obtain the demand model based on the price elasticity for different potential prices. Here, coefficient of price = -1.013.
+
+
+The profit curve derived from the demand model
+<img width="629" alt="Screen Shot 2023-01-19 at 5 18 34 PM" src="https://user-images.githubusercontent.com/119455759/213575192-8ede465c-8910-4c87-ae02-4f002cce84c2.png">
+
+- The optimal price is obtained by calculating the point generating highest expected profit.
 
 Optimal Price from this Model when a product is not featured: $2.65.
 
